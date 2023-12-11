@@ -1,0 +1,66 @@
+/* Reset some default styles */
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Basic styling for the main content */
+body {
+  margin: 20px;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+/* Styling for the results and details sections */
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Styling for the results and details divs */
+.results,
+.details {
+  margin-bottom: 20px;
+}
+
+/* Styling for the search results */
+.results h3 {
+  cursor: pointer;
+  color: #007BFF;
+}
+
+.results h3:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the details section */
+.details h3 {
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Add ARIA roles and attributes for better accessibility */
+#results {
+  role: region;
+  aria-label: "Search Results";
+}
+
+#details {
+  role: region;
+  aria-label: "Game Details";
+}
+
+#return {
+  role: region;
+  aria-label: "Return Button";
+}
