@@ -86,9 +86,12 @@ async function moveFunction(){
             console.log("move not recognized");
             // await loadSearchResults(recognizedText);
             // shufflePage();
+            shufflePage();
+
         }
 	} catch (error) {
 		console.error("Speech recognition error: " + error);
+        shufflePage();
 	}
 }
 // Function to start speech recognition and return a promise
