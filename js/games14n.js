@@ -5,20 +5,42 @@
 // const searchForm = document.querySelector("#searchForm");
 // const submitButton = document.querySelector("#submit-button");
 // const searchText = document.querySelector("#searchText");
+const scan = document.querySelector( '#scan' );
+
 const resultsDiv = document.querySelector("#results");
 const results1Div = document.querySelector("#results1");
 // const results2Div = document.querySelector("#results2");
 const detailsDiv = document.querySelector("#details");
+const details1Div = document.querySelector("#details1");
+
 const returnDiv = document.querySelector("#return");
-const shuffleDiv = document.querySelector("#shuffle");
 let totalstringl = 0;
+
+
+function shufflePage() { 
+
+    const scrollPosition = window.scrollY;
+    console.log(scrollPosition);
+    
+   const currentScrollPosition = window.scrollY;
+
+    // Scroll to the current position plus 100 pixels
+    window.scrollTo({
+        top: currentScrollPosition + 200,
+        behavior: 'smooth' // Optional: Use smooth scrolling animation
+    
+    });
+        
+    console.log(`moved!`);
+    // shufflePage();
+    setTimeout(moveFunction, 3000);
+    };
 
 function renderResultsPage() {
     // Show
     resultsDiv.className = "show"
     // hidden
     detailsDiv.className = "hidden"
-    shuffleDiv.className = "hidden"
   }
 
   function detailsResultsPage() {
@@ -26,21 +48,10 @@ function renderResultsPage() {
     resultsDiv.className = "hidden"
     results1Div.className = "hidden"
     // results2Div.className = "hidden"
-    shuffleDiv.className = "hidden"
     // show
     detailsDiv.className = "show"
   }
 
-  function shufflePage() {
-    // hide
-    resultsDiv.className = "hidden"
-    results1Div.className = "hidden"
-    // results2Div.className = "hidden"
-  
-    // show
-    detailsDiv.className = "hidden"
-    shuffleDiv.className = "show"
-  }
 
 
 async function welcomeFunction(){
@@ -55,6 +66,27 @@ async function welcomeFunction(){
 	try {
 		const recognizedText = await startSpeechRecognition();
 		await loadSearchResults(recognizedText);
+	} catch (error) {
+		console.error("Speech recognition error: " + error);
+	}
+}
+
+
+
+async function moveFunction(){
+    console.log(`moveFunction`);
+	try {
+		const recognizedText = await startSpeechRecognition();
+		// await loadSearchResults(recognizedText);
+        if (recognizedText == "scroll down") {
+            console.log("move recognized");
+            // await loadSearchResults(recognizedText);
+             shufflePage();
+        } else {
+            console.log("move not recognized");
+            // await loadSearchResults(recognizedText);
+            // shufflePage();
+        }
 	} catch (error) {
 		console.error("Speech recognition error: " + error);
 	}
@@ -90,7 +122,7 @@ function startSpeechRecognition() {
 
 
 async function loadSearchResults(searched){
-
+console.log(`searched...${searched}`);
     try {
         const response = await axios.get('https://opencritic-api.p.rapidapi.com/game/search', {
         params: { 
@@ -177,24 +209,28 @@ async function loadSearchResults(searched){
               'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
             }
           });
-  
+          details1Div.innerHTML = `<p>
+          <div class="details"> <font color="purple">
+            <h3>Say "scroll down" to move down the page, if you need to.</font> </h3>
+         </p>
+          </div>`
           response2.data[0]
        snippetstring = response2.data[0].snippet;
           for (review of response2.data) {
            detailsDiv.innerHTML += `
             <p>
               <div class="details">
+              <font color=purple>
                 <h3 data-id="${game.id}" > ${review.snippet}</h3>
-                .................
+                .................</font>
              </p>
               </div>
              
             `
             totalstringl += snippetstring.length;
             console.log(totalstringl);
-            
           } // each movie
-    
+     
         } catch (error) {
           console.error(error);
           detailsDiv.innerHTML += `
@@ -207,25 +243,13 @@ async function loadSearchResults(searched){
            
           `
         }
-        detailsResultsPage();
-        if (totalstringl > 6400) { 
-            shuffle();
-          // Your code here
-        }
+    detailsResultsPage();
+    moveFunction();
+
       }
       
-      shuffle = () => {
-        shufflePage();
-        shuffleDiv.innerHTML = `
-        <p>
-          <div class="shuffle">
-            <h3>shufflelink </h3>
-            .................
-         </p>
-          </div>
-         
-        `
 
-      }
-
+    //   function scrollToTop() {
+    //     $(window).scrollTop(0);
+    // }
    welcomeFunction();
