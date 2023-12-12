@@ -141,7 +141,7 @@ console.log(`searched...${searched}`);
           criteria: `${searched}`
         },
         headers: {
-          'X-RapidAPI-Key': '2751474908mshd037e3df8ab4effp12b747jsn10c701b85e70',
+          'X-RapidAPI-Key': 'd7f8e8c955msh550a0dde5babd1cp11e91ejsn526b4f782c8b',
           'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
         }
       });
@@ -217,7 +217,7 @@ console.log(`searched...${searched}`);
               criteria: `${searchNumber}`
             },
             headers: {
-              'X-RapidAPI-Key': '803f289465mshf853f8ef16b041cp167335jsn4892b7d31870',
+              'X-RapidAPI-Key': 'd7f8e8c955msh550a0dde5babd1cp11e91ejsn526b4f782c8b',
               'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
             }
           });
