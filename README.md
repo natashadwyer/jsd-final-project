@@ -28,11 +28,11 @@ Better access to games (lobby developers, policy makers)
 Co-opt technology people are already using (phones and tablets are big, neuronode is top of the range, aac speech is popular), can keep playing as their disease progresses   - We need to cater to all budgets and access levels…
 
 
-** Technical hurdles **
+**Technical Hurdles**
 >> Delaying the search functions so it waited for the speech recognition to deliver - async functions do the trick 
 >> The intricacies of the api, how it returns the user input - words vs. numbers. Multi-syllable work best. Lots of console logging does the trick.  
 
-** Future plans:**
+**Future Plans**
 	Observing users / using AAC tech myself to fine-tune the interface 
 	Including different languages, adding the Google translation function
 	Lobbying the open.critic api to include an accessibility field  - caniplaythat.com is the gold standard - but no api
