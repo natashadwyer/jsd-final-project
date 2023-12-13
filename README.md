@@ -1,6 +1,9 @@
 # jsd-final-project
 Link to the live app:  https://natashadwyer.github.io/jsd-final-project/
 
+**Instructions**
+The first screen will ask you to say a game. You will be presented with a list of games with an i.d associated.Say a game i.d - you will then receive game reviews.
+
 **Concept:** 
 This interface is for people living with MND and those who are paralysed and use AAC speech (augmented and alternative communication). Gaming is big within this community. However, gamers need advice from other gamers about the possibility of games, reviews from other users fill this need. 
 
